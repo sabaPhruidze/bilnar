@@ -1,16 +1,18 @@
 import React from 'react';
+
 import {AuthBG} from '../elements/AuthBG';
-import {AuthButton} from '../elements/AuthButton';
+
 import {AuthView} from '../elements/AuthView';
 import {Text} from 'react-native';
-import {AuthButtonLogin} from '../drawerChild/AuthButton';
-import {AuthButtonRegister} from '../drawerChild/AuthButton';
-const Authentication = () => {
+import {AuthButtonLogin} from '../navigationChild/AuthButton';
+import {AuthButtonRegister} from '../navigationChild/AuthButton';
+
+const Authentication = ({navigation}: {navigation: any}) => {
   return (
     <AuthBG source={require('../assets/images/registration.png')}>
       <AuthView>
-        <AuthButtonLogin />
-        <AuthButtonRegister />
+        <AuthButtonLogin navigation={navigation} />
+        <AuthButtonRegister navigation={navigation} />
       </AuthView>
     </AuthBG>
   );

@@ -1,15 +1,15 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Authentication from './Authentication';
+import Authentication from '../navigation/Authentication';
 import AboutStack from './AboutStack';
-
+import AuthStack from './AuthStack';
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer() {
   return (
     <Drawer.Navigator initialRouteName="HomeStack">
       <Drawer.Screen
-        name="Authentication"
-        component={Authentication}
+        name="AuthStack"
+        component={AuthStack}
         options={{
           headerShown: false,
         }}

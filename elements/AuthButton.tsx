@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const AuthButton = styled.TouchableOpacity<{
   authSize: string;
-  PressRef: boolean;
 }>`
   width: ${props => (props.authSize === 'login' ? '130px' : '180px')};
   height: 55px;

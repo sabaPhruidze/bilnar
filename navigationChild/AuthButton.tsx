@@ -10,24 +10,9 @@ export const AuthButtonLogin = ({navigation}: {navigation: any}) => {
     navigation.navigate('Login');
   };
   const context = useContext(myContext);
-  const {dispatching, state} = context;
-  const {loginBtnPressed} = state;
 
-  const handlePressIn = () => {
-    dispatching('LOGIN_BUTTON_IS_PRESSED', true);
-    console.log(loginBtnPressed);
-  };
-
-  const handlePressOut = () => {
-    dispatching('LOGIN_BUTTON_IS_PRESSED', false);
-    console.log(loginBtnPressed);
-  };
   return (
-    <AuthButton
-      authSize="login"
-      onPress={pressHandler}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}>
+    <AuthButton authSize="login" onPress={pressHandler}>
       <AuthButText>Login</AuthButText>
     </AuthButton>
   );
@@ -38,7 +23,7 @@ export const AuthButtonRegister = ({navigation}: {navigation: any}) => {
     navigation.navigate('Register');
   };
   const context = useContext(myContext);
-  const {state, dispaching} = context;
+  const {RegisterPressRef} = context;
 
   return (
     <AuthButton authSize="Register" onPress={pressHandler}>

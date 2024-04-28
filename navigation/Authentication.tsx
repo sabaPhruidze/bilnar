@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import {myContext} from '../App';
 import {SwitchBG} from '../elements/SwitchBG';
 import {AuthBG} from '../elements/AuthBG';
@@ -11,7 +11,6 @@ const Authentication = ({navigation}: {navigation: any}) => {
   const {state, dispatching} = authContext;
   const {switchBG} = state;
   const toggleSwitch = () => dispatching('SWITCH_BG', !switchBG);
-
   return (
     <AuthBG
       source={

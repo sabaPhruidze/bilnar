@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {myContext} from '../App';
-import {SwitchBG} from '../elements/SwitchBG';
+import SwitchForBG from '../navigationChild/SwitchForBG';
 import {AuthBG} from '../elements/AuthBG';
 import {AuthView} from '../elements/AuthView';
 import {Text} from 'react-native';
@@ -17,13 +17,7 @@ const Register = ({navigation}: {navigation: any}) => {
           : require('../assets/images/Bright/Register.png')
       }
       resizeMode="cover">
-      <SwitchBG
-        trackColor={{false: '#e0d3d3', true: '#3f3e3e'}}
-        thumbColor={switchBG ? '#a40000' : '#ff0000'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={switchBG}
-      />
+      <SwitchForBG />
       <AuthView>
         <Text>fe</Text>
       </AuthView>

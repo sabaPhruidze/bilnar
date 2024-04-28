@@ -8,10 +8,10 @@ import {useReducer, createContext} from 'react';
 export const myContext = createContext<any>('');
 
 interface InitialState {
-  loginBtnPressed: boolean;
+  switchBG: boolean;
 }
 const initialState: InitialState = {
-  loginBtnPressed: false,
+  switchBG: false,
 };
 
 type ActionType = {
@@ -22,9 +22,8 @@ type ActionType = {
 const reducer = (state: typeof initialState, action: ActionType) => {
   const newState = {...state};
   switch (action.type) {
-    case 'LOGIN_BUTTON_IS_PRESSED':
-    case 'LOGIN_BUTTON_ISNOT_PRESSED':
-      newState.loginBtnPressed = action.payload;
+    case 'SWITCH_BG':
+      newState.switchBG = action.payload;
       break;
     default:
       throw new Error('Unknown action type');

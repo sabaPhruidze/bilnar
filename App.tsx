@@ -44,7 +44,10 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{flex: 1}}>
-        <StatusBar backgroundColor="#eee" barStyle="dark-content" />
+        <StatusBar
+          backgroundColor={state.switchBG ? '#0f0f0f' : '#eee'}
+          barStyle={state.switchBG ? 'light-content' : 'dark-content'}
+        />
         <NavigationContainer>
           <myContext.Provider value={{state, dispatching}}>
             <Start />

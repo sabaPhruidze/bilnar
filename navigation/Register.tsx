@@ -3,12 +3,13 @@ import {myContext} from '../App';
 import SwitchForBG from '../navigationChild/SwitchForBG';
 import {AuthBG} from '../elements/AuthBG';
 import {AuthView} from '../elements/AuthView';
-import {Text} from 'react-native';
+import RegForm from '../navigationChild/RegForm';
+
 const Register = ({navigation}: {navigation: any}) => {
   const loginContext = useContext(myContext);
-  const {state, dispatching} = loginContext;
+  const {state} = loginContext;
   const {switchBG} = state;
-  const toggleSwitch = () => dispatching('SWITCH_BG', !switchBG);
+
   return (
     <AuthBG
       source={
@@ -18,9 +19,7 @@ const Register = ({navigation}: {navigation: any}) => {
       }
       resizeMode="cover">
       <SwitchForBG />
-      <AuthView>
-        <Text>fe</Text>
-      </AuthView>
+      <RegForm />
     </AuthBG>
   );
 };

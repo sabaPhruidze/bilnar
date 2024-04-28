@@ -7,9 +7,9 @@ import {Text} from 'react-native';
 
 const Login = ({navigation}: {navigation: any}) => {
   const loginContext = useContext(myContext);
-  const {state, dispatching} = loginContext;
+  const {state} = loginContext;
   const {switchBG} = state;
-  const toggleSwitch = () => dispatching('SWITCH_BG', !switchBG);
+
   return (
     <AuthBG
       source={

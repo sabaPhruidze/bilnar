@@ -9,9 +9,17 @@ export const myContext = createContext<any>('');
 
 interface InitialState {
   switchBG: boolean;
+  regName: string;
+  regMail: string;
+  regBirthday: string;
+  RegPassword: string;
 }
 const initialState: InitialState = {
   switchBG: false,
+  regName: '',
+  regMail: '',
+  regBirthday: '',
+  RegPassword: '',
 };
 
 type ActionType = {
@@ -24,6 +32,18 @@ const reducer = (state: typeof initialState, action: ActionType) => {
   switch (action.type) {
     case 'SWITCH_BG':
       newState.switchBG = action.payload;
+      break;
+    case 'REG_NAME':
+      newState.regName = action.payload;
+      break;
+    case 'REG_MAIL':
+      newState.regMail = action.payload;
+      break;
+    case 'REG_BIRTHDAY':
+      newState.regBirthday = action.payload;
+      break;
+    case 'REG_PASSWORD':
+      newState.RegPassword = action.payload;
       break;
     default:
       throw new Error('Unknown action type');

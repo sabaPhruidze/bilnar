@@ -1,22 +1,33 @@
-import {View, Text, TextInput} from 'react-native';
-import React from 'react';
 import {myContext} from '../App';
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
+import {Alert} from 'react-native';
+import auth from '@react-native-firebase/auth';
+import React from 'react';
 import {LogRegView} from '../elements/LogRegView';
 import {
   RegLogFormText,
   RegLogFormView,
   RegLogFormInput,
 } from '../elements/RegLogFormDiv';
-
+import {AuthButton} from '../elements/AuthButton';
+import {AuthButText} from '../elements/AuthButText';
 import RegisterData from '../Data/RegisterData';
 
 const RegForm = () => {
   const RegFormContext = useContext(myContext);
-  const {state, dispatching} = RegFormContext;
-  const {regName, regMail, regBirthday, RegPassword} = state;
-  const onChangeName = (Name: string) => dispatching('REG_NAME', Name);
+  const {state} = RegFormContext;
+  const {regMail, RegPassword} = state;
   const DATA = RegisterData();
+  const signUpTestFn = () => {
+    auth()
+      .createUserWithEmailAndPassword(regMail, RegPassword)
+      .then(() => {
+        Alert.alert('User created');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   return (
     <LogRegView>
       {DATA.map((data, idx) => (
@@ -26,9 +37,13 @@ const RegForm = () => {
             onChangeText={data.onChangeText}
             value={data.value}
             placeholder={data.placeholder}
+            placeholderTextColor="#ffffffe1"
           />
         </RegLogFormView>
       ))}
+      <AuthButton mt20 authSize="register" onPress={signUpTestFn}>
+        <AuthButText size="small">Register</AuthButText>
+      </AuthButton>
     </LogRegView>
   );
 };

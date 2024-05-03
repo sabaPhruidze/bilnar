@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const AuthButton = styled.TouchableOpacity<{
   authSize: string;
+  mt20: boolean;
 }>`
   width: ${props => (props.authSize === 'login' ? '130px' : '180px')};
   height: 55px;
@@ -13,4 +14,5 @@ export const AuthButton = styled.TouchableOpacity<{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: ${props => (props.mt20 ? '20px' : '0px')};
 `;

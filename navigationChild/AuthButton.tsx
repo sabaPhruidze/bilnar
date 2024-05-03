@@ -12,7 +12,7 @@ export const AuthButtonLogin = ({navigation}: {navigation: any}) => {
 
   return (
     <AuthButton authSize="login" onPress={pressHandler}>
-      <AuthButText>Login</AuthButText>
+      <AuthButText size="big">Login</AuthButText>
     </AuthButton>
   );
 };
@@ -26,7 +26,7 @@ export const AuthButtonRegister = ({navigation}: {navigation: any}) => {
 
   return (
     <AuthButton authSize="Register" onPress={pressHandler}>
-      <AuthButText>Register</AuthButText>
+      <AuthButText size="big">Register</AuthButText>
     </AuthButton>
   );
 };

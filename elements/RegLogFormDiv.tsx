@@ -17,7 +17,7 @@ export const RegLogFormText = styled.Text`
   font-weight: bold;
 `;
 export const RegLogFormInput = styled.TextInput`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   border: 1px solid white;
   padding-left: 10px;

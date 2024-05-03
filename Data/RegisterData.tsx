@@ -1,10 +1,21 @@
 import {myContext} from '../App';
 import {useContext} from 'react';
-
+import {Alert} from 'react-native';
+import auth from '@react-native-firebase/auth';
 const RegisterData = () => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
   const {regName, regMail, regBirthday, RegPassword} = state;
+  const signUpTestFn = () => {
+    auth()
+      .createUserWithEmailAndPassword(regMail, RegPassword)
+      .then(() => {
+        Alert.alert('User created');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   const REGISTERDATA = [
     {
@@ -21,7 +32,7 @@ const RegisterData = () => {
     },
     {
       content: 'Password',
-      onChangeText: (password: string) => dispatching('REG_MAIL', password),
+      onChangeText: (password: string) => dispatching('REG_PASSWORD', password),
       value: RegPassword,
       placeholder: 'Please write your password here',
     },

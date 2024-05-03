@@ -7,7 +7,7 @@ export const LogRegView = styled.View`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #db0000b7;
+  background-color: #db000095;
   border-radius: 30px;
   padding: 10px;
 `;

@@ -11,15 +11,17 @@ interface InitialState {
   switchBG: boolean;
   regName: string;
   regMail: string;
-  regBirthday: string;
-  RegPassword: string;
+  regPassword: string;
+  logMail: string;
+  logPassword: string;
 }
 const initialState: InitialState = {
   switchBG: false,
   regName: '',
   regMail: '',
-  regBirthday: '',
-  RegPassword: '',
+  regPassword: '',
+  logMail: '',
+  logPassword: '',
 };
 
 type ActionType = {
@@ -39,11 +41,14 @@ const reducer = (state: typeof initialState, action: ActionType) => {
     case 'REG_MAIL':
       newState.regMail = action.payload;
       break;
-    case 'REG_BIRTHDAY':
-      newState.regBirthday = action.payload;
-      break;
     case 'REG_PASSWORD':
-      newState.RegPassword = action.payload;
+      newState.regPassword = action.payload;
+      break;
+    case 'LOG_MAIL':
+      newState.logMail = action.payload;
+      break;
+    case 'LOG_PASSWORD':
+      newState.logPassword = action.payload;
       break;
     default:
       throw new Error('Unknown action type');

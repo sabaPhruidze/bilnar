@@ -1,7 +1,8 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Authentication from '../navigation/Authentication';
-import AboutStack from './AboutStack';
+import MainStack from './MainStack';
 import AuthStack from './AuthStack';
+
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer() {
@@ -15,8 +16,8 @@ export default function MyDrawer() {
         }}
       />
       <Drawer.Screen
-        name="About "
-        component={AboutStack}
+        name="MainStack"
+        component={MainStack}
         options={{
           headerTitleAlign: 'center',
         }}

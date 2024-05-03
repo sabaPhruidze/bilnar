@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const AboutStack = () => {
+const Main = () => {
   return (
     <View>
-      <Text>AboutStack</Text>
+      <Text>Main</Text>
     </View>
   );
 };
 
-export default AboutStack;
+export default Main;

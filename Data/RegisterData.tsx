@@ -4,7 +4,7 @@ import {useContext} from 'react';
 const RegisterData = () => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {regName, regMail, regBirthday, RegPassword} = state;
+  const {regName, regMail, regPassword} = state;
 
   const REGISTERDATA = [
     {
@@ -22,7 +22,7 @@ const RegisterData = () => {
     {
       content: 'Password',
       onChangeText: (password: string) => dispatching('REG_PASSWORD', password),
-      value: RegPassword,
+      value: regPassword,
       placeholder: 'Please write your password here',
     },
   ];

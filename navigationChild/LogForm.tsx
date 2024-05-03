@@ -11,22 +11,22 @@ import {
 } from '../elements/RegLogFormDiv';
 import {AuthButton} from '../elements/AuthButton';
 import {AuthButText} from '../elements/AuthButText';
-import RegisterData from '../Data/RegisterData';
+import LogintData from '../Data/LoginData';
 
-const RegForm = ({navigation}: {navigation: any}) => {
+const LogForm = ({navigation}: {navigation: any}) => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {regMail, regPassword} = state;
-  const DATA = RegisterData();
-  const signUpTestFn = () => {
+  const {logMail, logPassword} = state;
+  const DATA = LogintData();
+
+  const loginWithEmailAndPass = () => {
     auth()
-      .createUserWithEmailAndPassword(regMail, regPassword)
-      .then(() => {
-        navigation.navigate('Authentication');
+      .signInWithEmailAndPassword(logMail, logPassword)
+      .then(res => {
+        Alert.alert('Congratulations', 'You successfully logged in');
+        // navigation.navigate('Authentication');
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   };
   return (
     <LogRegView>
@@ -41,11 +41,11 @@ const RegForm = ({navigation}: {navigation: any}) => {
           />
         </RegLogFormView>
       ))}
-      <AuthButton mt20 authSize="register" onPress={signUpTestFn}>
-        <AuthButText size="small">Register</AuthButText>
+      <AuthButton mt20 authSize="login" onPress={loginWithEmailAndPass}>
+        <AuthButText size="small">Login</AuthButText>
       </AuthButton>
     </LogRegView>
   );
 };
 
-export default RegForm;
+export default LogForm;

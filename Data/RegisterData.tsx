@@ -19,6 +19,12 @@ const RegisterData = () => {
       value: regMail,
       placeholder: 'Please write your Mail here',
     },
+    {
+      content: 'Password',
+      onChangeText: (password: string) => dispatching('REG_MAIL', password),
+      value: RegPassword,
+      placeholder: 'Please write your password here',
+    },
   ];
   return REGISTERDATA;
 };

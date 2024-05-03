@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "784121742730",
+    "project_id": "bilnar-949d8",
+    "storage_bucket": "bilnar-949d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784121742730:android:2e53a26b15236fa9a3b473",
+        "android_client_info": {
+          "package_name": "com.bilnar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLSrh1Btm4cYMUanSDKKOk-65Ec1P5JIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

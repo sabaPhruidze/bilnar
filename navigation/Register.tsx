@@ -19,7 +19,7 @@ const Register = ({navigation}: {navigation: any}) => {
       }
       resizeMode="cover">
       <SwitchForBG />
-      <RegForm />
+      <RegForm navigation={navigation} />
     </AuthBG>
   );
 };

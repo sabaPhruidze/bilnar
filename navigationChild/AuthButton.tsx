@@ -11,7 +11,7 @@ export const AuthButtonLogin = ({navigation}: {navigation: any}) => {
   const context = useContext(myContext);
 
   return (
-    <AuthButton authSize="login" onPress={pressHandler}>
+    <AuthButton mt20={false} authSize="login" onPress={pressHandler}>
       <AuthButText size="big">Login</AuthButText>
     </AuthButton>
   );
@@ -25,7 +25,7 @@ export const AuthButtonRegister = ({navigation}: {navigation: any}) => {
   const {RegisterPressRef} = context;
 
   return (
-    <AuthButton authSize="Register" onPress={pressHandler}>
+    <AuthButton mt20={false} authSize="Register" onPress={pressHandler}>
       <AuthButText size="big">Register</AuthButText>
     </AuthButton>
   );

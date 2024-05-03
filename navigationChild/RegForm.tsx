@@ -13,16 +13,20 @@ import {AuthButton} from '../elements/AuthButton';
 import {AuthButText} from '../elements/AuthButText';
 import RegisterData from '../Data/RegisterData';
 
-const RegForm = () => {
+const RegForm = ({navigation}: {navigation: any}) => {
   const RegFormContext = useContext(myContext);
-  const {state} = RegFormContext;
+  const {state, dispatching} = RegFormContext;
   const {regMail, RegPassword} = state;
   const DATA = RegisterData();
   const signUpTestFn = () => {
     auth()
       .createUserWithEmailAndPassword(regMail, RegPassword)
       .then(() => {
-        Alert.alert('User created');
+        Alert.alert('Hello', 'User created');
+        dispatching('REG_NAME', '');
+        dispatching('REG_MAIL', '');
+        dispatching('REG_PASSWORD', '');
+        navigation.navigate('Authentication');
       })
       .catch(err => {
         console.log(err);

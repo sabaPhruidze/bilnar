@@ -12,39 +12,49 @@ import {
 import {AuthButton} from '../elements/AuthButton';
 import {AuthButText} from '../elements/AuthButText';
 import LogintData from '../Data/LoginData';
+import {AuthBGView} from '../elements/AuthBGView';
+import LogRegAlert from './LogRegAlert';
 
 const LogForm = ({navigation}: {navigation: any}) => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {logMail, logPassword} = state;
+  const {logMail, logPassword, regLogAlert} = state;
   const DATA = LogintData();
 
   const loginWithEmailAndPass = () => {
+    if (!logMail.trim() || !logPassword.trim()) {
+      dispatching('REG_LOG_ALERT', 3);
+      return;
+    }
     auth()
       .signInWithEmailAndPassword(logMail, logPassword)
       .then(res => {
-        Alert.alert('Congratulations', 'You successfully logged in');
-        // navigation.navigate('Authentication');
+        navigation.navigate('Main');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        dispatching('REG_LOG_ALERT', 3);
+      });
   };
   return (
-    <LogRegView>
-      {DATA.map((data, idx) => (
-        <RegLogFormView key={idx}>
-          <RegLogFormText>{data.content}</RegLogFormText>
-          <RegLogFormInput
-            onChangeText={data.onChangeText}
-            value={data.value}
-            placeholder={data.placeholder}
-            placeholderTextColor="#ffffffe1"
-          />
-        </RegLogFormView>
-      ))}
-      <AuthButton mt20 authSize="login" onPress={loginWithEmailAndPass}>
-        <AuthButText size="small">Login</AuthButText>
-      </AuthButton>
-    </LogRegView>
+    <AuthBGView>
+      {regLogAlert === 3 ? <LogRegAlert /> : ''}
+      <LogRegView>
+        {DATA.map((data, idx) => (
+          <RegLogFormView key={idx}>
+            <RegLogFormText>{data.content}</RegLogFormText>
+            <RegLogFormInput
+              onChangeText={data.onChangeText}
+              value={data.value}
+              placeholder={data.placeholder}
+              placeholderTextColor="#ffffffe1"
+            />
+          </RegLogFormView>
+        ))}
+        <AuthButton mt20 authSize="login" onPress={loginWithEmailAndPass}>
+          <AuthButText size="small">Login</AuthButText>
+        </AuthButton>
+      </LogRegView>
+    </AuthBGView>
   );
 };
 

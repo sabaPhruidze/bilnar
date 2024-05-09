@@ -27,6 +27,8 @@ const LogRegAlert = () => {
             ? 'Invalid Email'
             : regLogAlert === 2
             ? 'Password incorrect'
+            : regLogAlert === 3
+            ? 'Email or password incorrect.'
             : ''}
         </LogRegAlertTitle>
         <LogRegAlertText>
@@ -34,7 +36,9 @@ const LogRegAlert = () => {
           {regLogAlert === 1
             ? 'Please enter a valid email address'
             : regLogAlert === 2
-            ? 'The passwords you entered do not match or is blank. Please try again.'
+            ? 'The password needs to be at least 6 letters and must be same as confirm password. Please try again.'
+            : regLogAlert === 3
+            ? 'Please enter valid email and password'
             : ''}{' '}
         </LogRegAlertText>
         <View style={{alignItems: 'flex-end'}}>

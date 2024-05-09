@@ -12,7 +12,7 @@ export const LogRegAlertDivDark = styled.View`
 
 export const LogRegAlertDiv = styled.View`
   width: 240px;
-  height: 200px;
+  height: 250px;
   position: absolute;
   background-color: #a9010198;
   justify-content: space-evenly;

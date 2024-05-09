@@ -1,6 +1,7 @@
 import {myContext} from '../App';
 import {useContext} from 'react';
 import {Alert} from 'react-native';
+import {View} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import React from 'react';
 import {LogRegView} from '../elements/LogRegView';
@@ -9,26 +10,25 @@ import {
   RegLogFormView,
   RegLogFormInput,
 } from '../elements/RegLogFormDiv';
+import {AuthBGView} from '../elements/AuthBGView';
 import {AuthButton} from '../elements/AuthButton';
 import {AuthButText} from '../elements/AuthButText';
 import RegisterData from '../Data/RegisterData';
+import LogRegAlert from './LogRegAlert';
 
 const RegForm = ({navigation}: {navigation: any}) => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {regMail, regPassword, confirmPassword} = state;
+  const {regMail, regPassword, confirmPassword, regLogAlert} = state;
   const DATA = RegisterData();
   const signUpTestFn = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(regMail)) {
-      Alert.alert('Invalid Email', 'Please enter a valid email address.');
+      dispatching('REG_LOG_ALERT', 1);
       return; // Stop further execution
-    } else if (regPassword !== confirmPassword) {
-      Alert.alert(
-        'Password Mismatch',
-        'The passwords you entered do not match. Please try again.',
-      );
+    } else if (!regPassword.trim() || regPassword !== confirmPassword) {
+      dispatching('REG_LOG_ALERT', 2);
     } else if (emailRegex.test(regMail) && regPassword === confirmPassword) {
       auth()
         .createUserWithEmailAndPassword(regMail, regPassword)
@@ -43,22 +43,25 @@ const RegForm = ({navigation}: {navigation: any}) => {
     }
   };
   return (
-    <LogRegView>
-      {DATA.map((data, idx) => (
-        <RegLogFormView key={idx}>
-          <RegLogFormText>{data.content}</RegLogFormText>
-          <RegLogFormInput
-            onChangeText={data.onChangeText}
-            value={data.value}
-            placeholder={data.placeholder}
-            placeholderTextColor="#ffffffe1"
-          />
-        </RegLogFormView>
-      ))}
-      <AuthButton mt20 authSize="register" onPress={signUpTestFn}>
-        <AuthButText size="small">Register</AuthButText>
-      </AuthButton>
-    </LogRegView>
+    <AuthBGView>
+      {regLogAlert === 1 || regLogAlert === 2 ? <LogRegAlert /> : ''}
+      <LogRegView>
+        {DATA.map((data, idx) => (
+          <RegLogFormView key={idx}>
+            <RegLogFormText>{data.content}</RegLogFormText>
+            <RegLogFormInput
+              onChangeText={data.onChangeText}
+              value={data.value}
+              placeholder={data.placeholder}
+              placeholderTextColor="#ffffffe1"
+            />
+          </RegLogFormView>
+        ))}
+        <AuthButton mt20 authSize="register" onPress={signUpTestFn}>
+          <AuthButText size="small">Register</AuthButText>
+        </AuthButton>
+      </LogRegView>
+    </AuthBGView>
   );
 };
 

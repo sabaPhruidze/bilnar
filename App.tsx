@@ -14,6 +14,7 @@ interface InitialState {
   confirmPassword: string;
   logMail: string;
   logPassword: string;
+  regLogAlert: number;
 }
 const initialState: InitialState = {
   switchBG: false,
@@ -22,6 +23,7 @@ const initialState: InitialState = {
   confirmPassword: '',
   logMail: '',
   logPassword: '',
+  regLogAlert: 0,
 };
 
 type ActionType = {
@@ -49,6 +51,9 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       break;
     case 'LOG_PASSWORD':
       newState.logPassword = action.payload;
+      break;
+    case 'REG_LOG_ALERT':
+      newState.regLogAlert = action.payload;
       break;
     default:
       throw new Error('Unknown action type');

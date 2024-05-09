@@ -10,4 +10,6 @@ export const LogRegView = styled.View`
   background-color: #db000095;
   border-radius: 30px;
   padding: 10px;
+  position: relative;
+  z-index: 1;
 `;

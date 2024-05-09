@@ -9,17 +9,17 @@ export const myContext = createContext<any>('');
 
 interface InitialState {
   switchBG: boolean;
-  regName: string;
   regMail: string;
   regPassword: string;
+  confirmPassword: string;
   logMail: string;
   logPassword: string;
 }
 const initialState: InitialState = {
   switchBG: false,
-  regName: '',
   regMail: '',
   regPassword: '',
+  confirmPassword: '',
   logMail: '',
   logPassword: '',
 };
@@ -35,14 +35,14 @@ const reducer = (state: typeof initialState, action: ActionType) => {
     case 'SWITCH_BG':
       newState.switchBG = action.payload;
       break;
-    case 'REG_NAME':
-      newState.regName = action.payload;
-      break;
     case 'REG_MAIL':
       newState.regMail = action.payload;
       break;
     case 'REG_PASSWORD':
       newState.regPassword = action.payload;
+      break;
+    case 'CONFIRM_PASSWORD':
+      newState.confirmPassword = action.payload;
       break;
     case 'LOG_MAIL':
       newState.logMail = action.payload;
@@ -84,14 +84,3 @@ const App = () => {
 };
 
 export default App;
-
-// import firebase from 'firebase/app';
-
-// firebase.initializeApp({
-//   apiKey: 'YOUR_API_KEY',
-//   authDomain: 'YOUR_AUTH_DOMAIN',
-//   databaseURL: 'YOUR_DATABASE_URL',
-//   projectId: 'YOUR_PROJECT_ID',
-//   storageBucket: 'YOUR_STORAGE_BUCKET',
-//   messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-// });

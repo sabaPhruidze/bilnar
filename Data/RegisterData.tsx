@@ -4,15 +4,9 @@ import {useContext} from 'react';
 const RegisterData = () => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {regName, regMail, regPassword} = state;
+  const {confirmPassword, regMail, regPassword} = state;
 
   const REGISTERDATA = [
-    {
-      content: 'Name',
-      onChangeText: (Name: string) => dispatching('REG_NAME', Name),
-      value: regName,
-      placeholder: 'Please write your Name here',
-    },
     {
       content: 'Mail',
       onChangeText: (Mail: string) => dispatching('REG_MAIL', Mail),
@@ -24,6 +18,13 @@ const RegisterData = () => {
       onChangeText: (password: string) => dispatching('REG_PASSWORD', password),
       value: regPassword,
       placeholder: 'Please write your password here',
+    },
+    {
+      content: 'Confirm password',
+      onChangeText: (confirmPassword: string) =>
+        dispatching('CONFIRM_PASSWORD', confirmPassword),
+      value: confirmPassword,
+      placeholder: 'Please confirm your password here',
     },
   ];
   return REGISTERDATA;

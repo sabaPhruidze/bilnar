@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Authentication from '../navigation/Authentication';
 import Login from '../navigation/Login';
 import Register from '../navigation/Register';
-
+import Main from '../navigation/Main';
 const Stack = createNativeStackNavigator();
 const AuthStack = () => {
   return (
@@ -25,6 +25,13 @@ const AuthStack = () => {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Main"
+        component={Main}
         options={{
           headerShown: false,
         }}

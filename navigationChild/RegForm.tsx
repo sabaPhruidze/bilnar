@@ -16,17 +16,31 @@ import RegisterData from '../Data/RegisterData';
 const RegForm = ({navigation}: {navigation: any}) => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {regMail, regPassword} = state;
+  const {regMail, regPassword, confirmPassword} = state;
   const DATA = RegisterData();
   const signUpTestFn = () => {
-    auth()
-      .createUserWithEmailAndPassword(regMail, regPassword)
-      .then(() => {
-        navigation.navigate('Authentication');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(regMail)) {
+      Alert.alert('Invalid Email', 'Please enter a valid email address.');
+      return; // Stop further execution
+    } else if (regPassword !== confirmPassword) {
+      Alert.alert(
+        'Password Mismatch',
+        'The passwords you entered do not match. Please try again.',
+      );
+    } else if (emailRegex.test(regMail) && regPassword === confirmPassword) {
+      auth()
+        .createUserWithEmailAndPassword(regMail, regPassword)
+        .then(() => {
+          navigation.navigate('Authentication');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      console.log('Error');
+    }
   };
   return (
     <LogRegView>

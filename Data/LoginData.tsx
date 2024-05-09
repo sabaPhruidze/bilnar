@@ -4,7 +4,7 @@ import {useContext} from 'react';
 const LogintData = () => {
   const RegFormContext = useContext(myContext);
   const {state, dispatching} = RegFormContext;
-  const {regName, logMail, logPassword} = state;
+  const {logMail, logPassword} = state;
   const REGISTERDATA = [
     {
       content: 'Mail',

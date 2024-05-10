@@ -3,6 +3,8 @@ import {useEffect, useRef, useState} from 'react';
 import MainStack from './MainStack';
 import AuthStack from './AuthStack';
 import {useNavigation} from '@react-navigation/native';
+import {useContext} from 'react';
+import {myContext} from '../App';
 
 const Drawer = createDrawerNavigator();
 
@@ -13,16 +15,24 @@ export default function MyDrawer() {
     currentScreen === 'Authentication' ||
     currentScreen === 'Login' ||
     currentScreen === 'Register';
+  const startContext = useContext(myContext);
+  const {state, dispatching} = startContext;
+  const {switchBGRED} = state;
   useEffect(() => {
+    if (ALR) {
+      dispatching('SWITCH_BG_RED', false);
+    } else if (currentScreen === 'Main') {
+      dispatching('SWITCH_BG_RED', true);
+    } else {
+      ('');
+    }
     const unsubscribe = navigation.addListener('state', () => {
       const currentRouteName = navigation.getCurrentRoute().name;
       setCurrentScreen(currentRouteName);
     });
 
     return unsubscribe;
-  }, [navigation]);
-
-  console.log('Current Screen:', currentScreen); // You can log or use the current screen name here
+  }, [navigation, currentScreen]);
 
   return (
     <Drawer.Navigator initialRouteName="HomeStack">
@@ -31,6 +41,9 @@ export default function MyDrawer() {
         component={AuthStack}
         options={{
           headerShown: ALR ? false : true,
+          headerStyle: {
+            height: 80,
+          },
         }}
       />
       <Drawer.Screen

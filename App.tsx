@@ -9,6 +9,7 @@ export const myContext = createContext<any>('');
 
 interface InitialState {
   switchBG: boolean;
+  switchBGRED: boolean;
   regMail: string;
   regPassword: string;
   confirmPassword: string;
@@ -18,6 +19,7 @@ interface InitialState {
 }
 const initialState: InitialState = {
   switchBG: false,
+  switchBGRED: false,
   regMail: '',
   regPassword: '',
   confirmPassword: '',
@@ -36,6 +38,9 @@ const reducer = (state: typeof initialState, action: ActionType) => {
   switch (action.type) {
     case 'SWITCH_BG':
       newState.switchBG = action.payload;
+      break;
+    case 'SWITCH_BG_RED':
+      newState.switchBGRED = action.payload;
       break;
     case 'REG_MAIL':
       newState.regMail = action.payload;
@@ -75,8 +80,16 @@ const App = () => {
     <SafeAreaProvider>
       <SafeAreaView style={{flex: 1}}>
         <StatusBar
-          backgroundColor={state.switchBG ? '#0f0f0f' : '#eee'}
-          barStyle={state.switchBG ? 'light-content' : 'dark-content'}
+          backgroundColor={
+            state.switchBG === false && state.switchBGRED === false
+              ? '#eee'
+              : state.switchBG === true && state.switchBGRED === false
+              ? '#0f0f0f'
+              : state.switchBGRED === true
+              ? '#d60202'
+              : '#4cbe00'
+          }
+          barStyle={state.switchBG === false ? 'dark-content' : 'light-content'}
         />
         <NavigationContainer>
           <myContext.Provider value={{state, dispatching}}>

@@ -9,7 +9,7 @@ const Login = ({navigation}: {navigation: any}) => {
   const loginContext = useContext(myContext);
   const {state} = loginContext;
   const {switchBG} = state;
-
+  // console.log(navigationName);
   return (
     <AuthBG
       source={

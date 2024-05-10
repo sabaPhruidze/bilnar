@@ -1,27 +1,18 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Authentication from '../navigation/Authentication';
+import {useEffect, useRef, useState} from 'react';
 import MainStack from './MainStack';
 import AuthStack from './AuthStack';
 import {useNavigation} from '@react-navigation/native';
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer() {
-  const navigation = useNavigation();
-  const currentScreen = navigation.getCurrentRoute().name;
-  console.log(currentScreen);
-
   return (
     <Drawer.Navigator initialRouteName="HomeStack">
       <Drawer.Screen
         name="AuthStack"
         component={AuthStack}
         options={{
-          headerShown:
-            currentScreen === 'Authentication' ||
-            currentScreen === 'Login' ||
-            currentScreen === 'Register'
-              ? false
-              : true,
+          headerShown: false,
         }}
       />
       <Drawer.Screen

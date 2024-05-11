@@ -9,6 +9,13 @@ const AuthStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="Main"
+        component={Main}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Authentication"
         component={Authentication}
         options={{
@@ -25,13 +32,6 @@ const AuthStack = () => {
       <Stack.Screen
         name="Register"
         component={Register}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Main"
-        component={Main}
         options={{
           headerShown: false,
         }}

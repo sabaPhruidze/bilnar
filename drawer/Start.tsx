@@ -17,7 +17,7 @@ export default function MyDrawer() {
     currentScreen === 'Register';
   const startContext = useContext(myContext);
   const {state, dispatching} = startContext;
-  const {switchBGRED} = state;
+  const {switchBG} = state;
   useEffect(() => {
     if (ALR) {
       dispatching('SWITCH_BG_RED', false);
@@ -40,10 +40,15 @@ export default function MyDrawer() {
         name="AuthStack"
         component={AuthStack}
         options={{
+          title: 'All',
           headerShown: ALR ? false : true,
+          headerTintColor: !ALR && !switchBG ? 'black' : 'white', // this one changes the menu icon color
           headerStyle: {
             height: 80,
             backgroundColor: '#d60202',
+          },
+          headerTitleStyle: {
+            color: switchBG ? 'white' : 'black',
           },
         }}
       />

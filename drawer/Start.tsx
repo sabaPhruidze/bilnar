@@ -43,6 +43,7 @@ export default function MyDrawer() {
           headerShown: ALR ? false : true,
           headerStyle: {
             height: 80,
+            backgroundColor: '#d60202',
           },
         }}
       />

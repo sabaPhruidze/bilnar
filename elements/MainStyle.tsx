@@ -6,7 +6,7 @@ export const MSExampleText = styled.Text`
   height: 30px;
   background-color: #ef5656;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   border-radius: 0 10px 10px 0;
   text-align: center;
   position: absolute;
@@ -14,4 +14,6 @@ export const MSExampleText = styled.Text`
   top: 20px;
 `;
 
-export const MSExampleBGView = styled(AuthBGView)``;
+export const MSExampleBGView = styled(AuthBGView)`
+  justify-content: start;
+`;

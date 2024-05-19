@@ -11,7 +11,9 @@ const Main = () => {
   const {switchBG} = state;
   return (
     <MSExampleBGView style={{backgroundColor: switchBG ? 'black' : 'white'}}>
-      <MSExampleText>Example</MSExampleText>
+      <MSExampleText style={{color: switchBG ? 'white' : 'black'}}>
+        Example
+      </MSExampleText>
       <SwitchForBG />
       <MainTaskCard />
     </MSExampleBGView>

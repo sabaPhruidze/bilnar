@@ -41,5 +41,30 @@ export const Circle = styled.Image`
 export const InsideContainer = styled.View`
   width: 84%;
   height: 80%;
-  background-color: yellow;
+`;
+export const InsideHeader = styled.Text`
+  font-size: 18px;
+  font-weight: 400;
+  color: #ab0101;
+`;
+
+export const InsideIconBox = styled.View`
+  width: 100%;
+  height: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+export const InsideIcon = styled.Image`
+  width: 15px;
+  height: 15px;
+`;
+export const InsideIconBoxText = styled.Text`
+  font-size: 12px;
+  color: orange;
+  margin-right: 5px;
+`;
+export const TextArea = styled.Text`
+  font-size: 16px;
 `;

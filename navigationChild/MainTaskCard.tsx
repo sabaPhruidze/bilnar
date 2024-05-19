@@ -6,6 +6,11 @@ import {
   RepeatText,
   InsideContainer,
   Circle,
+  InsideHeader,
+  InsideIcon,
+  InsideIconBox,
+  InsideIconBoxText,
+  TextArea,
 } from '../elements/MainCard';
 
 const MainTaskCard = () => {
@@ -15,21 +20,17 @@ const MainTaskCard = () => {
         <RepeatText>unlimited</RepeatText>
         <Circle source={require('../assets/images/circleNothing.png')} />
         <InsideContainer>
-          <View>
-            <Text>Headline</Text>
-            <Text>Icon</Text>
-          </View>
-          <View>
-            <View>
-              <Text>Icon</Text>
-              <Text>100exp</Text>
-            </View>
-            <View>
-              <Text>Icon</Text>
-              <Text>5</Text>
-            </View>
-          </View>
-          <Text>gmerogmero[ mgre[osmg irepngeringiern </Text>
+          <InsideHeader>Headline</InsideHeader>
+          <InsideIconBox>
+            <InsideIcon source={require('../assets/images/star.png')} />
+            <InsideIconBoxText> 0 Exp</InsideIconBoxText>
+            <InsideIcon source={require('../assets/images/coin.png')} />
+            <InsideIconBoxText> 5</InsideIconBoxText>
+          </InsideIconBox>
+          <TextArea>
+            Contribute to the development of a new software application by
+            writing clean, efficient, and well-documented code.
+          </TextArea>
         </InsideContainer>
       </CardContainer>
     </Container>

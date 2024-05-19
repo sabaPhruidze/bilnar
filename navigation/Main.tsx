@@ -10,7 +10,7 @@ const Main = () => {
   const {state} = MainContext;
   const {switchBG} = state;
   return (
-    <MSExampleBGView style={{backgroundColor: switchBG ? 'black' : 'white'}}>
+    <MSExampleBGView style={{backgroundColor: switchBG ? 'black' : '#eeeeee'}}>
       <MSExampleText style={{color: switchBG ? 'white' : 'black'}}>
         Example
       </MSExampleText>

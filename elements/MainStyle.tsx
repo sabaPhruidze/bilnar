@@ -15,5 +15,10 @@ export const MSExampleText = styled.Text`
 `;
 
 export const MSExampleBGView = styled(AuthBGView)`
-  justify-content: start;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
 `;

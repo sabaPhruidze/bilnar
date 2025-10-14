@@ -28,11 +28,8 @@ const LogForm = ({navigation}: {navigation: any}) => {
     }
     auth()
       .signInWithEmailAndPassword(logMail, logPassword)
-      .then(res => {
-        navigation.navigate('Main');
-      })
-      .catch(err => {
-        dispatching('REG_LOG_ALERT', 3);
+      .then(() => {
+        dispatching('SET_AUTH', true); // this flips Drawer from AuthStack -> MainStack
       });
   };
   return (

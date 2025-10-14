@@ -16,6 +16,7 @@ interface InitialState {
   logMail: string;
   logPassword: string;
   regLogAlert: number;
+  isAuth: boolean;
 }
 const initialState: InitialState = {
   switchBG: false,
@@ -26,6 +27,7 @@ const initialState: InitialState = {
   logMail: '',
   logPassword: '',
   regLogAlert: 0,
+  isAuth: false,
 };
 
 type ActionType = {
@@ -59,6 +61,9 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       break;
     case 'REG_LOG_ALERT':
       newState.regLogAlert = action.payload;
+      break;
+    case 'SET_AUTH':
+      newState.isAuth = action.payload;
       break;
     default:
       throw new Error('Unknown action type');

@@ -94,6 +94,7 @@ const App = () => {
         <NavigationContainer>
           <myContext.Provider value={{state, dispatching}}>
             <Start />
+            {/* saba */}
           </myContext.Provider>
         </NavigationContainer>
       </SafeAreaView>
